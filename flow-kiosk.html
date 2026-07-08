@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>isps.confirm — Zo werkt de kioskflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#131A22;--muted:#5B6B7A;--paper:#FFF;--mist:#F4F6F8;--line:#E3E8ED;
+  --orange:#E8650F;--orange-soft:#FBEADC;--ok:#1F9D5B;--deny:#D6453D;--bg-el:#C7D2DC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px}
+.frame{width:min(960px,100%);}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:6px}
+.brand .dot{color:var(--orange)}
+.brand svg{width:22px;height:22px}
+.stage{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#FAFBFC 100%)}
+.stage svg.scene{width:100%;height:auto;display:block}
+
+/* ---- trucks ---- */
+.tA{transform:translateX(-460px);transition:transform 2.4s cubic-bezier(.45,0,.25,1)}
+.on-tA-in .tA{transform:translateX(0)}
+.on-tA-out .tA{transform:translateX(700px);transition-duration:2.6s}
+.tB{transform:translateX(-460px);transition:transform 2.4s cubic-bezier(.45,0,.25,1)}
+.on-tB-in .tB{transform:translateX(0)}
+.snap .tA,.snap .tB,.snap .arm{transition:none!important}
+
+/* ---- barrier ---- */
+.arm{transform-box:fill-box;transform-origin:100% 50%;transform:rotate(0deg);transition:transform 1.4s ease-in-out}
+.on-gate-open .arm{transform:rotate(66deg)}
+
+/* ---- kiosk badge ---- */
+.badge{opacity:0;transition:opacity .5s}
+.on-res-ok .badge-ok{opacity:1}
+.on-res-no .badge-no{opacity:1}
+.kioskscan{opacity:0}
+.on-scan .kioskscan{opacity:1;animation:kscan 2s ease-in-out infinite}
+@keyframes kscan{0%,100%{transform:translateY(0)}50%{transform:translateY(78px)}}
+
+/* ---- panel ---- */
+.panel{opacity:0;transition:opacity .45s;pointer-events:none}
+.panel.on{opacity:1}
+.callout{opacity:0;transition:opacity .45s}
+.callout.on{opacity:1}
+
+/* panel inner animations: run when .on */
+.panel .chip{opacity:.35}
+.panel.on .chip{animation:chipin .4s ease forwards}
+.panel.on .chip:nth-of-type(1){animation-delay:.15s}
+.panel.on .chip:nth-of-type(2){animation-delay:.3s}
+.panel.on .chip:nth-of-type(3){animation-delay:.45s}
+.panel.on .chip:nth-of-type(4){animation-delay:.6s}
+.panel.on .chip:nth-of-type(5){animation-delay:.75s}
+.panel.on .chip:nth-of-type(6){animation-delay:.9s}
+@keyframes chipin{to{opacity:1}}
+.panel .chip-pick rect{fill:#fff;stroke:var(--line);transition:none}
+.panel.on .chip-pick rect{animation:pick .5s ease forwards 1.7s}
+.panel.on .chip-pick text{animation:picktxt .5s ease forwards 1.7s}
+@keyframes pick{to{fill:#E8650F;stroke:#E8650F}}
+@keyframes picktxt{to{fill:#fff}}
+
+.typed tspan{opacity:0}
+.panel.on .typed tspan{animation:chipin .08s ease forwards}
+.panel.on .typed tspan:nth-child(1){animation-delay:.7s}
+.panel.on .typed tspan:nth-child(2){animation-delay:1s}
+.panel.on .typed tspan:nth-child(3){animation-delay:1.3s}
+.panel.on .typed tspan:nth-child(4){animation-delay:1.6s}
+.panel.on .typed tspan:nth-child(5){animation-delay:1.9s}
+.caret{opacity:0}
+.panel.on .caret{animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.sweep{opacity:0}
+.panel.on .sweep{animation:sweepmove 2.2s ease-in-out .5s 1 forwards}
+@keyframes sweepmove{0%{opacity:1;transform:translateY(0)}90%{opacity:1;transform:translateY(96px)}100%{opacity:0;transform:translateY(96px)}}
+.stepcheck{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:center}
+.panel.on .stepcheck{animation:pop .45s cubic-bezier(.2,1.4,.4,1) forwards 2.7s}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+
+.dots10 circle{opacity:.25}
+.panel.on .dots10 circle{animation:chipin .15s ease forwards}
+.panel.on .dots10 circle:nth-child(1){animation-delay:.5s}
+.panel.on .dots10 circle:nth-child(2){animation-delay:.7s}
+.panel.on .dots10 circle:nth-child(3){animation-delay:.9s}
+.panel.on .dots10 circle:nth-child(4){animation-delay:1.1s}
+.panel.on .dots10 circle:nth-child(5){animation-delay:1.3s}
+.panel.on .dots10 circle:nth-child(6){animation-delay:1.5s}
+.panel.on .dots10 circle:nth-child(7){animation-delay:1.7s}
+.panel.on .dots10 circle:nth-child(8){animation-delay:1.9s}
+.panel.on .dots10 circle:nth-child(9){animation-delay:2.1s}
+.panel.on .dots10 circle:nth-child(10){animation-delay:2.3s}
+.panel.on .dots10 circle:nth-child(11){animation-delay:2.5s}
+.formatok{opacity:0}
+.panel.on .formatok{animation:chipin .4s ease forwards 2.9s}
+
+.radar{transform-box:fill-box;transform-origin:center;opacity:0}
+.panel.on .radar{opacity:1;animation:spin 1.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse3 circle{opacity:.2}
+.panel.on .pulse3 circle{animation:p3 1.2s ease-in-out infinite}
+.panel.on .pulse3 circle:nth-child(2){animation-delay:.2s}
+.panel.on .pulse3 circle:nth-child(3){animation-delay:.4s}
+@keyframes p3{0%,100%{opacity:.2}50%{opacity:1}}
+
+.bigres{opacity:0;transform:scale(.7);transform-box:fill-box;transform-origin:center}
+.panel.on .bigres{animation:pop .5s cubic-bezier(.2,1.4,.4,1) forwards .3s}
+.reslines{opacity:0}
+.panel.on .reslines{animation:chipin .5s ease forwards .8s}
+.logline{opacity:0}
+.panel.on .logline{animation:chipin .5s ease forwards 1.4s}
+
+/* ---- outro ---- */
+.outro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .6s}
+.on-dim .outro{opacity:1}
+.outro .wm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;letter-spacing:-.02em}
+.outro .wm .dot{color:var(--orange)}
+.outro p{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ---- caption & controls ---- */
+.caption{min-height:64px;padding:16px 6px 4px;text-align:center}
+.caption .lbl{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.caption p{font-size:.98rem;color:var(--ink);margin-top:6px}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 0 4px}
+.controls button{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;border:1px solid var(--line);background:#fff;color:var(--ink);
+  border-radius:10px;padding:.5em 1em;cursor:pointer;transition:border-color .15s}
+.controls button:hover{border-color:var(--ink)}
+.controls .play{background:var(--orange);border-color:var(--orange);color:#fff;min-width:88px}
+.dotsnav{display:flex;gap:7px;justify-content:center;padding:10px 0 2px}
+.dotsnav i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}
+.dotsnav i.cur{background:var(--orange);transform:scale(1.25)}
+.rm-note{display:none;text-align:center;font-size:.8rem;color:var(--muted);padding-top:6px}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rm-note{display:block}
+}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="brand">
+    <svg viewBox="0 0 26 26" fill="none"><rect x="1.5" y="1.5" width="23" height="23" rx="6" stroke="#131A22" stroke-width="2"/><path d="M8 13.5l3.4 3.4L18.5 10" stroke="#E8650F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    isps<span class="dot">.</span>confirm&nbsp;<span style="font-weight:500;color:#5B6B7A;font-size:.85rem">· de kioskflow</span>
+  </div>
+
+  <div class="stage" id="root">
+    <svg class="scene" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="truckshape">
+          <g stroke="#131A22" stroke-width="2.6" stroke-linejoin="round">
+            <rect x="0" y="0" width="180" height="112" rx="7" fill="#FFF"/>
+            <path d="M180 30h42c5 0 10 2.6 12.6 7l19 30c2 3.1 3 6.2 3 9.9V103c0 5.5-4.5 10-10 10h-66.6z" fill="#FFF"/>
+            <path d="M189 39h26l17.5 29H189z" fill="#EAF0F5"/>
+            <circle cx="50" cy="122" r="20" fill="#fff"/><circle cx="50" cy="122" r="8" fill="#EAF0F5"/>
+            <circle cx="104" cy="122" r="20" fill="#fff"/><circle cx="104" cy="122" r="8" fill="#EAF0F5"/>
+            <circle cx="219" cy="122" r="20" fill="#fff"/><circle cx="219" cy="122" r="8" fill="#EAF0F5"/>
+          </g>
+          <text x="42" y="64" font-family="'Space Grotesk',sans-serif" font-size="21" font-weight="600" fill="#C7D2DC" letter-spacing="2">CARGO</text>
+        </g>
+      </defs>
+
+      <!-- achtergrond: kraan + containers -->
+      <g stroke="#C7D2DC" stroke-width="2" stroke-linecap="round">
+        <path d="M856 452V190"/><path d="M856 190H756"/><path d="M856 190h60"/>
+        <path d="M856 168v22"/><path d="M856 168l-78 22M856 168l52 22"/>
+        <path d="M782 190v34"/><rect x="768" y="224" width="28" height="18" rx="2"/>
+      </g>
+      <g stroke="#C7D2DC" stroke-width="2">
+        <rect x="798" y="414" width="60" height="19" rx="2"/>
+        <rect x="768" y="433" width="60" height="19" rx="2"/>
+        <rect x="830" y="433" width="60" height="19" rx="2"/>
+        <line x1="818" y1="414" x2="818" y2="433"/><line x1="838" y1="414" x2="838" y2="433"/>
+        <line x1="788" y1="433" x2="788" y2="452"/><line x1="808" y1="433" x2="808" y2="452"/>
+        <line x1="850" y1="433" x2="850" y2="452"/><line x1="870" y1="433" x2="870" y2="452"/>
+      </g>
+      <g stroke="#C7D2DC" stroke-width="2" stroke-linecap="round">
+        <path d="M120 330c6-7 12-7 18 0M138 330c6-7 12-7 18 0"/>
+        <path d="M212 300c5-6 10-6 15 0M227 300c5-6 10-6 15 0"/>
+      </g>
+
+      <!-- grond -->
+      <line x1="36" y1="486" x2="924" y2="486" stroke="#131A22" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="56" y1="506" x2="240" y2="506" stroke="#E3E8ED" stroke-width="2"/>
+      <line x1="700" y1="506" x2="900" y2="506" stroke="#E3E8ED" stroke-width="2"/>
+
+      <!-- trucks -->
+      <g class="tA"><use href="#truckshape" x="62" y="342"/></g>
+      <g class="tB"><use href="#truckshape" x="62" y="342"/></g>
+
+      <!-- slagboom -->
+      <g stroke="#131A22" stroke-width="2.6" stroke-linecap="round">
+        <g class="arm">
+          <rect x="322" y="414" width="152" height="15" rx="7.5" fill="#fff"/>
+          <rect x="338" y="414" width="19" height="15" fill="#E8650F" stroke="none"/>
+          <rect x="378" y="414" width="19" height="15" fill="#E8650F" stroke="none"/>
+          <rect x="418" y="414" width="19" height="15" fill="#E8650F" stroke="none"/>
+          <rect x="322" y="414" width="152" height="15" rx="7.5"/>
+        </g>
+        <rect x="466" y="404" width="22" height="82" rx="4" fill="#fff"/>
+      </g>
+
+      <!-- kiosk -->
+      <g>
+        <rect x="560" y="250" width="104" height="236" rx="11" fill="#FFF" stroke="#131A22" stroke-width="2.6"/>
+        <rect x="560" y="250" width="104" height="15" rx="7.5" fill="#E8650F" stroke="none"/>
+        <rect x="574" y="282" width="76" height="100" rx="7" fill="#F4F6F8" stroke="#131A22" stroke-width="2"/>
+        <rect x="596" y="302" width="32" height="32" rx="8" fill="#fff" stroke="#131A22" stroke-width="2"/>
+        <path d="M604 318l5 5 10-11" stroke="#E8650F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M590 352h44M598 366h28" stroke="#E3E8ED" stroke-width="4" stroke-linecap="round"/>
+        <g class="kioskscan"><line x1="579" y1="290" x2="645" y2="290" stroke="#E8650F" stroke-width="2.6" stroke-linecap="round"/></g>
+        <g fill="#E3E8ED">
+          <circle cx="590" cy="408" r="4.5"/><circle cx="612" cy="408" r="4.5"/><circle cx="634" cy="408" r="4.5"/>
+          <circle cx="590" cy="428" r="4.5"/><circle cx="612" cy="428" r="4.5"/><circle cx="634" cy="428" r="4.5"/>
+        </g>
+        <g class="badge badge-ok">
+          <circle cx="672" cy="380" r="17" fill="#1F9D5B"/>
+          <path d="M664 380l6 6 10-12" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g class="badge badge-no">
+          <circle cx="672" cy="380" r="17" fill="#D6453D"/>
+          <path d="M666 374l12 12M678 374l-12 12" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- callout naar paneel -->
+      <g class="callout" id="callout">
+        <line x1="612" y1="282" x2="612" y2="250" stroke="#E3E8ED" stroke-width="2" stroke-dasharray="4 5"/>
+      </g>
+
+      <!-- ===== paneel (scherm-close-up) ===== -->
+      <g id="panelbox" class="callout">
+        <rect x="392" y="34" width="440" height="216" rx="16" fill="#FFF" stroke="#E3E8ED" stroke-width="2"/>
+        <rect x="392" y="34" width="440" height="10" rx="5" fill="#E8650F"/>
+      </g>
+
+      <!-- p-lang -->
+      <g class="panel" id="p-lang">
+        <text x="612" y="88" text-anchor="middle" font-family="'Inter',sans-serif" font-size="17" font-weight="600" fill="#131A22">Kies je taal · Choose your language</text>
+        <g font-family="'JetBrains Mono',monospace" font-size="13" font-weight="500">
+          <g class="chip"><rect x="428" y="116" width="56" height="34" rx="17" fill="#fff" stroke="#E3E8ED" stroke-width="2"/><text x="456" y="138" text-anchor="middle" fill="#131A22">NL</text></g>
+          <g class="chip"><rect x="494" y="116" width="56" height="34" rx="17" fill="#fff" stroke="#E3E8ED" stroke-width="2"/><text x="522" y="138" text-anchor="middle" fill="#131A22">EN</text></g>
+          <g class="chip"><rect x="560" y="116" width="56" height="34" rx="17" fill="#fff" stroke="#E3E8ED" stroke-width="2"/><text x="588" y="138" text-anchor="middle" fill="#131A22">FR</text></g>
+          <g class="chip"><rect x="626" y="116" width="56" height="34" rx="17" fill="#fff" stroke="#E3E8ED" stroke-width="2"/><text x="654" y="138" text-anchor="middle" fill="#131A22">DE</text></g>
+          <g class="chip chip-pick"><rect x="692" y="116" width="56" height="34" rx="17" stroke-width="2"/><text x="720" y="138" text-anchor="middle" fill="#131A22">PL</text></g>
+          <g class="chip"><rect x="428" y="160" width="56" height="34" rx="17" fill="#fff" stroke="#E3E8ED" stroke-width="2"/><text x="456" y="182" text-anchor="middle" fill="#131A22">RO</text></g>
+        </g>
+        <text x="612" y="222" text-anchor="middle" font-family="'Inter',sans-serif" font-size="12" fill="#5B6B7A">+ 24 andere talen</text>
+      </g>
+
+      <!-- p-order -->
+      <g class="panel" id="p-order">
+        <text x="612" y="92" text-anchor="middle" font-family="'Inter',sans-serif" font-size="17" font-weight="600" fill="#131A22">Ordernummer</text>
+        <rect x="472" y="116" width="280" height="52" rx="10" fill="#F4F6F8" stroke="#E3E8ED" stroke-width="2"/>
+        <text class="typed" x="492" y="150" font-family="'JetBrains Mono',monospace" font-size="22" font-weight="500" fill="#E8650F"><tspan>#</tspan><tspan>8</tspan><tspan>4</tspan><tspan>2</tspan><tspan>0</tspan></text>
+        <rect class="caret" x="576" y="128" width="2.5" height="28" fill="#131A22"/>
+        <text x="612" y="204" text-anchor="middle" font-family="'Inter',sans-serif" font-size="12" fill="#5B6B7A">gekoppeld aan de aanmelding</text>
+      </g>
+
+      <!-- p-doc -->
+      <g class="panel" id="p-doc">
+        <g stroke="#E8650F" stroke-width="3" stroke-linecap="round">
+          <path d="M496 74v-10h14M728 74v-10h-14M496 210v10h14M728 210v10h-14"/>
+        </g>
+        <rect x="524" y="92" width="176" height="104" rx="8" fill="#fff" stroke="#131A22" stroke-width="2.4"/>
+        <circle cx="568" cy="136" r="18" stroke="#5B6B7A" stroke-width="2"/>
+        <path d="M544 176c4-13 13-19 24-19s20 6 24 19" stroke="#5B6B7A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M606 120h74M606 140h74M606 160h52" stroke="#E3E8ED" stroke-width="5" stroke-linecap="round"/>
+        <g class="sweep"><line x1="506" y1="86" x2="718" y2="86" stroke="#E8650F" stroke-width="3" stroke-linecap="round"/></g>
+        <g class="stepcheck"><circle cx="716" cy="196" r="17" fill="#1F9D5B"/><path d="M708 196l6 6 10-12" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </g>
+
+      <!-- p-selfie -->
+      <g class="panel" id="p-selfie">
+        <g stroke="#E8650F" stroke-width="3" stroke-linecap="round">
+          <path d="M496 74v-10h14M728 74v-10h-14M496 210v10h14M728 210v10h-14"/>
+        </g>
+        <circle cx="612" cy="120" r="26" stroke="#131A22" stroke-width="2.4"/>
+        <path d="M568 196c7-24 24-36 44-36s37 12 44 36" stroke="#131A22" stroke-width="2.4" stroke-linecap="round"/>
+        <g class="sweep"><line x1="506" y1="86" x2="718" y2="86" stroke="#E8650F" stroke-width="3" stroke-linecap="round"/></g>
+        <g class="stepcheck"><circle cx="716" cy="196" r="17" fill="#1F9D5B"/><path d="M708 196l6 6 10-12" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </g>
+
+      <!-- p-rrn -->
+      <g class="panel" id="p-rrn">
+        <text x="612" y="92" text-anchor="middle" font-family="'Inter',sans-serif" font-size="17" font-weight="600" fill="#131A22">Rijksregister- of BIS-nummer</text>
+        <rect x="452" y="116" width="320" height="52" rx="10" fill="#F4F6F8" stroke="#E3E8ED" stroke-width="2"/>
+        <g class="dots10" fill="#131A22">
+          <circle cx="484" cy="142" r="4"/><circle cx="506" cy="142" r="4"/>
+          <circle cx="536" cy="142" r="4"/><circle cx="558" cy="142" r="4"/>
+          <circle cx="588" cy="142" r="4"/><circle cx="610" cy="142" r="4"/>
+          <circle cx="640" cy="142" r="4"/><circle cx="662" cy="142" r="4"/><circle cx="684" cy="142" r="4"/>
+          <circle cx="714" cy="142" r="4"/><circle cx="736" cy="142" r="4"/>
+        </g>
+        <path d="M520 142h4M572 142h4M624 142h4M698 142h4" stroke="#C7D2DC" stroke-width="2.4" stroke-linecap="round"/>
+        <g class="formatok">
+          <circle cx="546" cy="198" r="9" fill="#1F9D5B"/><path d="M542 198l3 3 5.5-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="564" y="203" font-family="'Inter',sans-serif" font-size="13" fill="#1F9D5B" font-weight="600">formaat gevalideerd</text>
+        </g>
+      </g>
+
+      <!-- p-aigis -->
+      <g class="panel" id="p-aigis">
+        <path d="M560 66l30 12v20c0 19-12.5 35-30 42-17.5-7-30-23-30-42V78l30-12z" stroke="#131A22" stroke-width="2.4" stroke-linejoin="round" fill="#fff"/>
+        <circle cx="560" cy="104" r="17" stroke="#E8650F" stroke-width="2"/>
+        <g class="radar"><path d="M560 104L560 87A17 17 0 0 1 574 96Z" fill="#E8650F" opacity=".35"/><line x1="560" y1="104" x2="560" y2="87" stroke="#E8650F" stroke-width="2" stroke-linecap="round"/></g>
+        <circle cx="560" cy="104" r="2" fill="#E8650F"/>
+        <text x="612" y="92" font-family="'Space Grotesk',sans-serif" font-size="17" font-weight="600" fill="#131A22">Havenverbod-check</text>
+        <text x="612" y="114" font-family="'Inter',sans-serif" font-size="12.5" fill="#5B6B7A">AIGIS — realtime via de Belgische</text>
+        <text x="612" y="132" font-family="'Inter',sans-serif" font-size="12.5" fill="#5B6B7A">overheids-API, bij elk bezoek</text>
+        <g class="pulse3" fill="#E8650F">
+          <circle cx="586" cy="186" r="5"/><circle cx="608" cy="186" r="5"/><circle cx="630" cy="186" r="5"/>
+        </g>
+        <text x="612" y="222" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#5B6B7A" letter-spacing="1">CONTROLE IN HET OFFICIËLE REGISTER…</text>
+      </g>
+
+      <!-- p-ok -->
+      <g class="panel" id="p-ok">
+        <g class="bigres"><circle cx="612" cy="112" r="34" fill="#1F9D5B"/><path d="M596 112l11 11 21-24" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g class="reslines">
+          <text x="612" y="176" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="19" font-weight="600" fill="#1F9D5B">Geen verbod — toegang verleend</text>
+          <text x="612" y="200" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#5B6B7A">De slagboom opent. De beslissing wordt gelogd.</text>
+        </g>
+        <text class="logline" x="612" y="228" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#5B6B7A">10:42:07 · toegang verleend · gelogd ✓</text>
+      </g>
+
+      <!-- p-no -->
+      <g class="panel" id="p-no">
+        <g class="bigres"><circle cx="612" cy="112" r="34" fill="#D6453D"/><path d="M599 99l26 26M625 99l-26 26" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>
+        <g class="reslines">
+          <text x="612" y="176" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="19" font-weight="600" fill="#D6453D">Verbod gevonden — toegang geweigerd</text>
+          <text x="612" y="200" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#5B6B7A">De poort blijft dicht.</text>
+        </g>
+        <text class="logline" x="612" y="228" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#5B6B7A">10:44:31 · geweigerd · reden: havenverbod · gelogd ✓</text>
+      </g>
+    </svg>
+
+    <div class="outro">
+      <div class="wm">isps<span class="dot">.</span>confirm</div>
+      <p>Elke beslissing gelogd · elk bezoek gecheckt</p>
+    </div>
+  </div>
+
+  <div class="caption">
+    <span class="lbl" id="cap-lbl"></span>
+    <p id="cap-sub"></p>
+  </div>
+  <div class="dotsnav" id="dotsnav"></div>
+  <div class="controls">
+    <button id="btn-prev" aria-label="Vorige stap">‹ Vorige</button>
+    <button id="btn-play" class="play">Pauze</button>
+    <button id="btn-next" aria-label="Volgende stap">Volgende ›</button>
+  </div>
+  <p class="rm-note">Verminderde beweging actief — gebruik Vorige/Volgende om de stappen te bekijken.</p>
+</div>
+
+<script>
+const steps=[
+ {lbl:"AANKOMST",sub:"Een chauffeur meldt zich aan bij de poort van de terminal.",dur:3400,cls:["tA-in"],panel:null},
+ {lbl:"STAP 01 · AANMELDEN",sub:"De chauffeur kiest zijn taal op de kiosk — beschikbaar in 30 talen.",dur:4200,cls:["tA-in"],panel:"p-lang"},
+ {lbl:"STAP 02 · ORDERNUMMER",sub:"Het ordernummer van de transporteur wordt ingegeven en gekoppeld.",dur:3800,cls:["tA-in"],panel:"p-order"},
+ {lbl:"STAP 03 · DOCUMENTFOTO",sub:"Foto van de identiteitskaart of het paspoort — vastgelegd voor verificatie en audit.",dur:4400,cls:["tA-in"],panel:"p-doc"},
+ {lbl:"STAP 04 · SELFIE",sub:"Live foto van de persoon zelf, ter vergelijking met het document.",dur:4400,cls:["tA-in"],panel:"p-selfie"},
+ {lbl:"STAP 05 · NUMMER",sub:"Rijksregister- of BIS-nummer, met validatie op formaat.",dur:4200,cls:["tA-in"],panel:"p-rrn"},
+ {lbl:"STAP 06 · HAVENVERBOD-CHECK",sub:"Realtime controle via AIGIS, de officiële Belgische overheids-API.",dur:4400,cls:["tA-in","scan"],panel:"p-aigis"},
+ {lbl:"STAP 07 · RESULTAAT",sub:"Geen verbod: de slagboom opent en de toegang wordt geregistreerd.",dur:5600,cls:["tA-in","tA-out","gate-open","res-ok"],panel:"p-ok"},
+ {lbl:"STAP 07 · RESULTAAT",sub:"Verbod gevonden: de poort blijft dicht — geweigerd, met reden en tijdstip gelogd.",dur:5600,cls:["tA-in","tA-out","tB-in","res-no"],panel:"p-no"},
+ {lbl:"",sub:"Elke beslissing gelogd. Elk bezoek gecheckt.",dur:4200,cls:["tA-in","tA-out","tB-in","dim"],panel:null},
+];
+const root=document.getElementById('root');
+const lblEl=document.getElementById('cap-lbl'),subEl=document.getElementById('cap-sub');
+const panels=[...document.querySelectorAll('.panel')];
+const pbox=document.getElementById('panelbox'),callout=document.getElementById('callout');
+const nav=document.getElementById('dotsnav');
+steps.forEach((s,i)=>{const d=document.createElement('i');d.addEventListener('click',()=>go(i,true));nav.appendChild(d);});
+const navdots=[...nav.children];
+let cur=0,timer=null,playing=true;
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function apply(i,snap){
+  const s=steps[i];
+  root.className='stage'+(snap?' snap':'')+s.cls.map(c=>' on-'+c).join('');
+  if(snap){void root.offsetWidth;root.classList.remove('snap');}
+  panels.forEach(p=>p.classList.toggle('on',p.id===s.panel));
+  const showBox=!!s.panel;
+  pbox.classList.toggle('on',showBox);callout.classList.toggle('on',showBox);
+  lblEl.textContent=s.lbl;subEl.textContent=s.sub;
+  navdots.forEach((d,j)=>d.classList.toggle('cur',j===i));
+}
+function schedule(){
+  clearTimeout(timer);
+  if(!playing||reduced)return;
+  timer=setTimeout(()=>{const n=(cur+1)%steps.length;go(n,n===0);},steps[cur].dur);
+}
+function go(i,snap){cur=i;apply(i,snap||false);schedule();}
+document.getElementById('btn-prev').addEventListener('click',()=>go((cur-1+steps.length)%steps.length,true));
+document.getElementById('btn-next').addEventListener('click',()=>go((cur+1)%steps.length,true));
+const playBtn=document.getElementById('btn-play');
+playBtn.addEventListener('click',()=>{playing=!playing;playBtn.textContent=playing?'Pauze':'Afspelen';if(playing)schedule();else clearTimeout(timer);});
+if(reduced){playing=false;playBtn.textContent='Afspelen';}
+go(0,true);
+</script>
+</body>
+</html>
