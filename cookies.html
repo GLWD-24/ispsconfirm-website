@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookieverklaring, isps.confirm</title>
+<meta name="description" content="Cookieverklaring voor de website ispsconfirm.com: deze site gebruikt geen cookies, geen analytics en geen tracking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF9F6;--surface:#FFFFFF;--surface-2:#F1EFE9;--accent:#F25C05;--accent-h:#D94F04;
+  --accent-2:#D7263D;--ok:#1E9E4B;--text:#16181D;--text-dim:#5D6066;
+  --hairline:rgba(22,24,29,.10);--hairline-strong:rgba(22,24,29,.18);
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono","SFMono-Regular",ui-monospace,monospace;
+  --maxw:1220px;--ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--accent);color:#FFFFFF}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--text-dim)}
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--accent);margin-bottom:22px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);display:inline-block}
+
+/* buttons (pill) */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--body);font-weight:600;font-size:.92rem;letter-spacing:.01em;padding:12px 26px;border-radius:999px;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease);white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:var(--accent);color:#FFFFFF}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(242,92,5,.45)}
+
+/* nav */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .35s var(--ease),border-color .35s var(--ease);border-bottom:1px solid transparent}
+header.nav.scrolled{background:rgba(250,249,246,.85);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--hairline)}
+.nav-inner{display:flex;align-items:center;gap:20px;height:72px}
+.wordmark{font-family:var(--display);font-weight:800;font-size:1.22rem;letter-spacing:-.01em}
+.wordmark .dot{color:var(--accent)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.lang-toggle{display:inline-flex;border:1px solid var(--hairline-strong);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.1em}
+.lang-toggle button{padding:7px 12px;color:var(--text-dim);transition:background .2s,color .2s}
+.lang-toggle button[aria-pressed="true"]{background:var(--accent);color:#FFFFFF}
+
+/* legal content */
+.legal{max-width:760px;margin:0 auto;padding:132px 28px 30px;animation:fadeUp .6s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.legal h1{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1.03;font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:16px}
+.legal-updated{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--text-dim);margin-bottom:34px;text-transform:uppercase}
+.legal .lead{font-size:1.12rem;color:var(--text);margin-bottom:12px}
+.legal h2{font-family:var(--display);font-weight:800;letter-spacing:-.01em;font-size:1.34rem;margin:40px 0 12px;padding-top:26px;border-top:1px solid var(--hairline)}
+.legal h2:first-of-type{border-top:none;padding-top:0}
+.legal p{color:var(--text-dim);margin-bottom:14px}
+.legal p strong,.legal li strong{color:var(--text);font-weight:600}
+.legal ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin:6px 0 16px}
+.legal li{position:relative;padding-left:24px;color:var(--text-dim)}
+.legal li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.legal a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.legal a:hover{color:var(--accent-h)}
+.legal-note{margin-top:44px;padding-top:20px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--text-dim);line-height:1.6}
+
+/* footer */
+footer{background:var(--surface-2);border-top:1px solid var(--accent);position:relative;padding:64px 0 40px;margin-top:40px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr auto;gap:40px;margin-bottom:44px}
+.foot-tag{color:var(--text-dim);font-size:.95rem;max-width:40ch;margin-top:16px}
+.foot-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px}
+.foot-col a{display:block;color:var(--text);font-size:.95rem;padding:6px 0;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--hairline);padding-top:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.copyright{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--text-dim)}
+[data-i18n]{transition:opacity .15s var(--ease)}
+.lang-swapping [data-i18n]{opacity:0}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .legal{padding:112px 20px 20px}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .nav-right .btn{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="wordmark">isps<span class="dot">.</span>confirm</a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Taal / Language">
+        <button data-lang="nl" aria-pressed="true">NL</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="index.html#signup" class="btn btn-primary"><span data-i18n="nav.cta">Vraag toegang aan</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="legal">
+  <span class="eyebrow" data-i18n="pg.eyebrow">COOKIES · WEBSITE</span>
+  <h1 data-i18n="pg.title">Cookieverklaring</h1>
+  <div class="legal-updated" data-i18n="pg.updated">Laatst bijgewerkt: 21 juli 2026</div>
+
+  <p class="lead" data-i18n="pg.lead">Kort en eerlijk: deze website gebruikt geen cookies.</p>
+
+  <h2 data-i18n="pg.s1h">Geen cookies, geen tracking</h2>
+  <p data-i18n="pg.s1b">De website ispsconfirm.com plaatst geen cookies. We gebruiken geen analytics, geen advertentiecookies en geen trackers. Daarom tonen we ook geen cookiebanner: er is er geen nodig.</p>
+
+  <h2 data-i18n="pg.s2h">Externe verzoeken</h2>
+  <p data-i18n="pg.s2b">De enige verzoeken naar derden zijn:</p>
+  <ul>
+    <li data-i18n="pg.s2l1">Google Fonts (fonts.googleapis.com en fonts.gstatic.com) voor de lettertypes, waarbij Google je IP-adres kan verwerken.</li>
+    <li data-i18n="pg.s2l2">GitHub Pages als host van de website, dat je IP-adres in serverlogs kan verwerken.</li>
+  </ul>
+  <p data-i18n="pg.s2b2">Deze verzoeken plaatsen zelf geen cookies op je toestel. Meer uitleg vind je in onze <a href="privacy.html">privacyverklaring</a>.</p>
+
+  <h2 data-i18n="pg.s3h">Als dit verandert</h2>
+  <p data-i18n="pg.s3b">Voegen we later toch iets toe dat cookies gebruikt, bijvoorbeeld analytics, dan werken we eerst deze pagina bij en tonen we een toestemmingsbanner wanneer dat vereist is.</p>
+
+  <div class="legal-note" data-i18n="pg.disclaimer">Dit document is een werkversie en werd nog niet juridisch nagekeken.</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="index.html" class="wordmark">isps<span class="dot">.</span>confirm</a>
+        <p class="foot-tag" data-i18n="foot.tag">Geautomatiseerde toegangscontrole voor ISPS-haventerminals.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.legal">Juridisch</h4>
+        <a href="index.html" data-i18n="foot.home">Home</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Privacy</a>
+        <a href="cookies.html" data-i18n="foot.cookies">Cookies</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.contact">Contact</h4>
+        <a href="mailto:info@ispsconfirm.com">info@ispsconfirm.com</a>
+        <a href="index.html#signup" data-i18n="nav.cta">Vraag toegang aan</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.lang">NL / EN</h4>
+        <div class="lang-toggle" role="group" aria-label="Taal / Language">
+          <button data-lang="nl" aria-pressed="true">NL</button>
+          <button data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copyright" data-i18n="foot.copy">© 2026 isps.confirm · een product van Kanban Agency · Gemaakt in België</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var I18N = {
+    nl:{
+      "nav.cta":"Vraag toegang aan",
+      "pg.eyebrow":"COOKIES · WEBSITE",
+      "pg.title":"Cookieverklaring",
+      "pg.updated":"Laatst bijgewerkt: 21 juli 2026",
+      "pg.lead":"Kort en eerlijk: deze website gebruikt geen cookies.",
+      "pg.s1h":"Geen cookies, geen tracking",
+      "pg.s1b":"De website ispsconfirm.com plaatst geen cookies. We gebruiken geen analytics, geen advertentiecookies en geen trackers. Daarom tonen we ook geen cookiebanner: er is er geen nodig.",
+      "pg.s2h":"Externe verzoeken",
+      "pg.s2b":"De enige verzoeken naar derden zijn:",
+      "pg.s2l1":"Google Fonts (fonts.googleapis.com en fonts.gstatic.com) voor de lettertypes, waarbij Google je IP-adres kan verwerken.",
+      "pg.s2l2":"GitHub Pages als host van de website, dat je IP-adres in serverlogs kan verwerken.",
+      "pg.s2b2":"Deze verzoeken plaatsen zelf geen cookies op je toestel. Meer uitleg vind je in onze <a href='privacy.html'>privacyverklaring</a>.",
+      "pg.s3h":"Als dit verandert",
+      "pg.s3b":"Voegen we later toch iets toe dat cookies gebruikt, bijvoorbeeld analytics, dan werken we eerst deze pagina bij en tonen we een toestemmingsbanner wanneer dat vereist is.",
+      "pg.disclaimer":"Dit document is een werkversie en werd nog niet juridisch nagekeken.",
+      "foot.tag":"Geautomatiseerde toegangscontrole voor ISPS-haventerminals.",
+      "foot.legal":"Juridisch","foot.home":"Home","foot.privacy":"Privacy","foot.cookies":"Cookies",
+      "foot.contact":"Contact","foot.lang":"NL / EN",
+      "foot.copy":"© 2026 isps.confirm · een product van Kanban Agency · Gemaakt in België"
+    },
+    en:{
+      "nav.cta":"Request access",
+      "pg.eyebrow":"COOKIES · WEBSITE",
+      "pg.title":"Cookie notice",
+      "pg.updated":"Last updated: 21 July 2026",
+      "pg.lead":"Short and honest: this website uses no cookies.",
+      "pg.s1h":"No cookies, no tracking",
+      "pg.s1b":"The website ispsconfirm.com sets no cookies. We use no analytics, no advertising cookies and no trackers. That is also why we show no cookie banner: none is needed.",
+      "pg.s2h":"Third party requests",
+      "pg.s2b":"The only requests to third parties are:",
+      "pg.s2l1":"Google Fonts (fonts.googleapis.com and fonts.gstatic.com) for the fonts, whereby Google may process your IP address.",
+      "pg.s2l2":"GitHub Pages as host of the website, which may process your IP address in server logs.",
+      "pg.s2b2":"These requests do not set cookies on your device themselves. More detail is in our <a href='privacy.html'>privacy notice</a>.",
+      "pg.s3h":"If this changes",
+      "pg.s3b":"If we later add something that does use cookies, for example analytics, we will update this page first and show a consent banner where that is required.",
+      "pg.disclaimer":"This document is a working version and has not yet been legally reviewed.",
+      "foot.tag":"Automated access control for ISPS port terminals.",
+      "foot.legal":"Legal","foot.home":"Home","foot.privacy":"Privacy","foot.cookies":"Cookies",
+      "foot.contact":"Contact","foot.lang":"NL / EN",
+      "foot.copy":"© 2026 isps.confirm · a product of Kanban Agency · Made in Belgium"
+    }
+  };
+  var HTML_KEYS = {"pg.s2b2":1};
+  var current = "nl";
+  function applyLang(lang){
+    var dict = I18N[lang]; if(!dict) return;
+    current = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      if(dict[k] !== undefined){ if(HTML_KEYS[k]) el.innerHTML = dict[k]; else el.textContent = dict[k]; }
+    });
+    document.querySelectorAll(".lang-toggle button").forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang")===lang ? "true":"false");
+    });
+    document.title = (lang==="en" ? "Cookie notice, isps.confirm" : "Cookieverklaring, isps.confirm");
+  }
+  function switchLang(lang){
+    if(lang===current) return;
+    document.body.classList.add("lang-swapping");
+    setTimeout(function(){ applyLang(lang); document.body.classList.remove("lang-swapping"); }, 150);
+  }
+  document.querySelectorAll(".lang-toggle button").forEach(function(b){
+    b.addEventListener("click", function(){ switchLang(b.getAttribute("data-lang")); });
+  });
+  var nav = document.getElementById("nav");
+  function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 24); }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  applyLang("nl");
+})();
+</script>
+</body>
+</html>

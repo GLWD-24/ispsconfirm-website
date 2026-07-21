@@ -255,7 +255,6 @@ header.nav.scrolled{background:rgba(250,249,246,.85);backdrop-filter:blur(14px);
 .sc-chip[data-stage="b"] .g-spin{display:block}
 .sc-chip[data-stage="b"].resolved .g-spin{display:none}
 .sc-chip[data-stage="b"].resolved .g-ok{display:grid}
-.sc-chip[data-stage="d"] .g-ok{display:grid}
 .sc-chip[data-stage="c"] .g-ok{display:grid}
 
 /* light wash over the whole scene during the aerial reveal, fades in with the closing line */
@@ -461,6 +460,8 @@ header.nav.scrolled{background:rgba(250,249,246,.85);backdrop-filter:blur(14px);
 .field input:focus{outline:none;border-color:var(--accent)}
 .consent{display:flex;gap:12px;align-items:flex-start;margin:22px 0 26px;font-size:.88rem;color:var(--text-dim);line-height:1.5}
 .consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}
+.consent a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.consent a:hover{color:var(--accent-h)}
 .form-note{font-family:var(--mono);font-size:.66rem;color:var(--text-dim);margin-top:16px;letter-spacing:.05em}
 .form-success{display:none;text-align:center;padding:30px 10px}
 .form-success.show{display:block}
@@ -581,12 +582,12 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
   <div class="wrap">
     <div class="hero-content">
       <span class="eyebrow hero-eyebrow" data-i18n="hero.eyebrow">ISPS · BELGISCHE HAVENS · LIVE HAVENVERBOD-CHECK VIA AIGIS (BOSA), BIJ ÉLK BEZOEK</span>
-      <h1 aria-label="Toegangscontrole voor haventerminals, geautomatiseerd.">
-        <span class="line"><span data-i18n="hero.h1a">Toegangscontrole voor</span></span>
-        <span class="line"><span data-i18n="hero.h1b">haventerminals,</span></span>
-        <span class="line"><span data-i18n="hero.h1c"><span class="underline-lime">geautomatiseerd</span>.</span></span>
+      <h1 aria-label="Elke chauffeur gecheckt. Elk bezoek. Geen uitzonderingen.">
+        <span class="line"><span data-i18n="hero.h1a"><span class="underline-lime">Elke</span> chauffeur gecheckt.</span></span>
+        <span class="line"><span data-i18n="hero.h1b">Elk bezoek.</span></span>
+        <span class="line"><span data-i18n="hero.h1c">Geen uitzonderingen.</span></span>
       </h1>
-      <p class="hero-sub" data-i18n="hero.sub">isps.confirm identificeert chauffeurs en bezoekers aan de poort en controleert elk bezoek live op een havenverbod in seconden, zonder tussenkomst.</p>
+      <p class="hero-sub" data-i18n="hero.sub">In de app heeft de chauffeur zijn QR-code klaar, scant aan de poort en de AIGIS havenverbod-check draait live. De poort gaat open in seconden. Geen app? De kiosk vangt het op.</p>
       <div class="hero-ctas">
         <a href="#signup" class="btn btn-primary"><span data-i18n="cta.download">Download de app</span></a>
         <a href="#signup" class="btn btn-ghost"><span data-i18n="cta.access">Vraag toegang aan</span></a>
@@ -780,7 +781,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
         <div class="fast-steps">
           <div class="fast-step"><span class="connector">→</span><div class="fast-num">1</div><h4 data-i18n="fast.s1t">Scan</h4><p data-i18n="fast.s1d">De chauffeur toont de roterende QR-code uit de app. Identiteit is al vooraf geverifieerd.</p></div>
           <div class="fast-step"><span class="connector">→</span><div class="fast-num">2</div><h4 data-i18n="fast.s2t">Ordernummer</h4><p data-i18n="fast.s2d">Enkel het ordernummer van de rit wordt nog ingegeven of bevestigd.</p></div>
-          <div class="fast-step"><div class="fast-num">3</div><h4 data-i18n="fast.s3t">Aangemeld</h4><p data-i18n="fast.s3d">De poort gaat open. Van scan tot doorrijden in enkele seconden.</p></div>
+          <div class="fast-step"><div class="fast-num">3</div><h4 data-i18n="fast.s3t">Binnen</h4><p data-i18n="fast.s3d">De poort gaat open. Van scan tot doorrijden in enkele seconden.</p></div>
         </div>
         <p class="fast-closer" data-i18n="fast.closer">Ook via de app draait de havenverbod-check automatisch op de achtergrond, bij elk bezoek. Sneller, nooit minder streng.</p>
       </div>
@@ -940,9 +941,9 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
           <div class="field"><label data-i18n="sign.fName">Naam</label><input type="text" name="name" required autocomplete="name"></div>
           <div class="field"><label data-i18n="sign.fCompany">Bedrijf</label><input type="text" name="company" required autocomplete="organization"></div>
           <div class="field"><label data-i18n="sign.fEmail">E-mailadres</label><input type="email" name="email" required autocomplete="email"></div>
-          <label class="consent"><input type="checkbox" required id="consent"><span data-i18n="sign.consent">Ik ga akkoord dat mijn gegevens worden gebruikt om contact op te nemen over de uitrol. (verplicht)</span></label>
+          <label class="consent"><input type="checkbox" required id="consent"><span data-i18n="sign.consent">Ik ga akkoord met de <a href="privacy.html">privacyverklaring</a> en dat mijn gegevens worden gebruikt om contact op te nemen over de uitrol.</span></label>
           <button type="submit" class="btn btn-primary" style="width:100%"><span data-i18n="sign.btn">Verstuur aanvraag</span></button>
-          <p class="form-note" data-i18n="sign.note">Je mailprogramma opent om de aanvraag te versturen naar info@ispsconfirm.com.</p>
+          <p class="form-note" data-i18n="sign.note">DEMO · FORMULIER VERSTUURT NERGENS HEEN · STUUR JE AANVRAAG NAAR INFO@ISPSCONFIRM.COM</p>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="ok-ring">✓</div>
@@ -973,6 +974,8 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
         <h4 data-i18n="foot.contact">Contact</h4>
         <a href="mailto:info@ispsconfirm.com">info@ispsconfirm.com</a>
         <a href="#signup" data-i18n="cta.access">Vraag toegang aan</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Privacy</a>
+        <a href="cookies.html" data-i18n="foot.cookies">Cookies</a>
       </div>
       <div class="foot-col">
         <h4 data-i18n="foot.lang">NL / EN</h4>
@@ -999,15 +1002,14 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       "nav.app":"De app","nav.how":"Hoe het werkt","nav.features":"Functies","nav.who":"Voor wie","nav.compliance":"Compliance",
       "cta.download":"Download de app","cta.access":"Vraag toegang aan",
       "hero.eyebrow":"ISPS · BELGISCHE HAVENS · LIVE HAVENVERBOD-CHECK VIA AIGIS (BOSA), BIJ ÉLK BEZOEK",
-      "hero.h1a":"Toegangscontrole voor","hero.h1b":"haventerminals,","hero.h1c":"<span class='underline-lime'>geautomatiseerd</span>.",
-      "hero.sub":"isps.confirm identificeert chauffeurs en bezoekers aan de poort en controleert elk bezoek live op een havenverbod in seconden, zonder tussenkomst.",
+      "hero.h1a":"<span class='underline-lime'>Elke</span> chauffeur gecheckt.","hero.h1b":"Elk bezoek.","hero.h1c":"Geen uitzonderingen.",
+      "hero.sub":"In de app heeft de chauffeur zijn QR-code klaar, scant aan de poort en de AIGIS havenverbod-check draait live. De poort gaat open in seconden. Geen app? De kiosk vangt het op.",
       "hero.status":"LIVE · officiële overheids-API",
       "term.eyebrow":"VANUIT DE LUCHT · ÉÉN RIT","term.aria":"Vanuit de lucht: een chauffeur rijdt de terminal op, van de app tot binnen.","term.scroll":"SCROLL",
       "term.aLabel":"DE APP","term.aText":"QR klaar in de app",
-      "term.bLabel":"AIGIS CHECK","term.bLine1":"Identiteit gecheckt op havenverbod","term.bLine2":"Ordernummer 8842107 bevestigd",
-      "term.dLabel":"POORT OPEN","term.dText":"Toegang verleend",
-      "term.cLabel":"AANGEMELD","term.cText":"Welkom op de terminal",
-      "term.final":"Van aankomst tot binnen, in seconden.",
+      "term.bLabel":"AIGIS CHECK","term.bOrder":"Ordernummer 8842107","term.bWait":"Havenverbod controleren","term.bDone":"Havenverbod: geen",
+      "term.cLabel":"BINNEN","term.cText":"Welkom op de terminal",
+      "term.final":"Van aankomst tot aangemeld, in seconden.",
       "proof.label":"Waarop je kan bouwen",
       "prob.eyebrow":"CARGO · VANDAAG","prob.h":"Handmatige poortcontrole houdt alles op, en bewijst niks.",
       "prob.body":"Papieren lijsten, telefoontjes naar de planning, een blik op een kaart aan de poort. Traag, foutgevoelig en achteraf niet hard te maken. En dat havenverbod? Handmatig wordt het zelden gecheckt, of nooit.",
@@ -1032,7 +1034,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       "fast.intro":"De app is de standaard. Chauffeurs registreren zich vooraf en tonen aan de poort hun QR-code. Drie handelingen en ze rijden door.",
       "fast.s1t":"Scan","fast.s1d":"De chauffeur toont de roterende QR-code uit de app. Identiteit is al vooraf geverifieerd.",
       "fast.s2t":"Ordernummer","fast.s2d":"Enkel het ordernummer van de rit wordt nog ingegeven of bevestigd.",
-      "fast.s3t":"Aangemeld","fast.s3d":"De poort gaat open. Van scan tot doorrijden in enkele seconden.",
+      "fast.s3t":"Binnen","fast.s3d":"De poort gaat open. Van scan tot doorrijden in enkele seconden.",
       "fast.closer":"Ook via de app draait de havenverbod-check automatisch op de achtergrond, bij elk bezoek. Sneller, nooit minder streng.",
       "feat.eyebrow":"KERNFUNCTIES","feat.h":"Alles wat de poort nodig heeft, in één systeem.",
       "feat.intro":"Gebouwd voor de realiteit van een terminal: internationale chauffeurs, meerdere poorten en de plicht om alles aantoonbaar te maken.",
@@ -1055,26 +1057,25 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       "sign.body":"isps.confirm rolt gefaseerd uit bij Belgische terminals. Laat je gegevens achter en we nemen contact op om de uitrol voor jouw site te bekijken.",
       "sign.noticeT":"Download de app","sign.noticeD":"De mobiele app en de Windows-desktop-app zijn in afronding; de downloadlink verschijnt hier binnenkort. Wie toegang aanvraagt, krijgt hem als eerste.",
       "sign.fName":"Naam","sign.fCompany":"Bedrijf","sign.fEmail":"E-mailadres",
-      "sign.consent":"Ik ga akkoord dat mijn gegevens worden gebruikt om contact op te nemen over de uitrol. (verplicht)",
-      "sign.btn":"Verstuur aanvraag","sign.note":"Je mailprogramma opent om de aanvraag te versturen naar info@ispsconfirm.com.",
+      "sign.consent":"Ik ga akkoord met de <a href=\"privacy.html\">privacyverklaring</a> en dat mijn gegevens worden gebruikt om contact op te nemen over de uitrol.",
+      "sign.btn":"Verstuur aanvraag","sign.note":"DEMO · FORMULIER VERSTUURT NERGENS HEEN · STUUR JE AANVRAAG NAAR INFO@ISPSCONFIRM.COM",
       "sign.okT":"Bedankt","sign.okD":"je aanvraag is ontvangen. We nemen binnenkort contact met je op om de uitrol voor jouw terminal te bespreken.",
       "foot.tag":"Geautomatiseerde toegangscontrole voor ISPS-haventerminals: identificatie aan de poort en een live havenverbod-check via de Belgische overheids-API.",
-      "foot.product":"Product","foot.contact":"Contact","foot.lang":"NL / EN",
+      "foot.product":"Product","foot.contact":"Contact","foot.lang":"NL / EN","foot.privacy":"Privacy","foot.cookies":"Cookies",
       "foot.copy":"© 2026 isps.confirm · een product van Kanban Agency · Gemaakt in België · Nederlands (EN/FR volgen)"
     },
     en:{
       "nav.app":"The app","nav.how":"How it works","nav.features":"Features","nav.who":"Who it's for","nav.compliance":"Compliance",
       "cta.download":"Download the app","cta.access":"Request access",
       "hero.eyebrow":"ISPS · BELGIAN PORTS · LIVE PORT-BAN CHECK VIA AIGIS (BOSA), ON EVERY SINGLE VISIT",
-      "hero.h1a":"Access control for","hero.h1b":"port terminals,","hero.h1c":"<span class='underline-lime'>automated</span>.",
-      "hero.sub":"isps.confirm identifies drivers and visitors at the gate and checks every visit live for a port ban in seconds, without intervention.",
+      "hero.h1a":"Every driver <span class='underline-lime'>checked</span>.","hero.h1b":"Every visit.","hero.h1c":"No exceptions.",
+      "hero.sub":"In the app the driver has a QR code ready, scans at the gate and the AIGIS port-ban check runs live. The gate opens in seconds. No app? The kiosk has it covered.",
       "hero.status":"LIVE · official government API",
       "term.eyebrow":"FROM ABOVE · ONE TRIP","term.aria":"From above: a driver enters the terminal, from the app to inside.","term.scroll":"SCROLL",
       "term.aLabel":"THE APP","term.aText":"QR ready in the app",
-      "term.bLabel":"AIGIS CHECK","term.bLine1":"Identity checked for port ban","term.bLine2":"Order number 8842107 confirmed",
-      "term.dLabel":"GATE OPEN","term.dText":"Access granted",
-      "term.cLabel":"CHECKED IN","term.cText":"Welcome on the terminal",
-      "term.final":"From arrival to inside, in seconds.",
+      "term.bLabel":"AIGIS CHECK","term.bOrder":"Order number 8842107","term.bWait":"Checking port ban","term.bDone":"Port ban: none",
+      "term.cLabel":"IN","term.cText":"Onto the terminal",
+      "term.final":"From arrival to checked in, in seconds.",
       "proof.label":"What you can build on",
       "prob.eyebrow":"CARGO · TODAY","prob.h":"Manual gate control slows everything down, and proves nothing.",
       "prob.body":"Paper lists, phone calls to planning, a glance at an ID card at the gate. Slow, error-prone and impossible to stand behind after the fact. And that port ban? By hand, it's rarely checked, or never.",
@@ -1099,7 +1100,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       "fast.intro":"The app is the default. Drivers register beforehand and show their QR code at the gate. Three actions and they drive through.",
       "fast.s1t":"Scan","fast.s1d":"The driver shows the rotating QR code from the app. Identity is already verified.",
       "fast.s2t":"Order number","fast.s2d":"Only the trip's order number is entered or confirmed.",
-      "fast.s3t":"Checked in","fast.s3d":"The gate opens. From scan to driving through in seconds.",
+      "fast.s3t":"In","fast.s3d":"The gate opens. From scan to driving through in seconds.",
       "fast.closer":"Through the app too, the port-ban check runs automatically in the background, on every visit. Faster, never less strict.",
       "feat.eyebrow":"CORE FEATURES","feat.h":"Everything the gate needs, in one system.",
       "feat.intro":"Built for the reality of a terminal: international drivers, multiple gates and the duty to make everything provable.",
@@ -1122,16 +1123,16 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       "sign.body":"isps.confirm is rolling out in phases at Belgian terminals. Leave your details and we'll get in touch to look at the rollout for your site.",
       "sign.noticeT":"Download the app","sign.noticeD":"The mobile app and the Windows desktop app are being finalised; the download link will appear here soon. Request access and you'll get it first.",
       "sign.fName":"Name","sign.fCompany":"Company","sign.fEmail":"Email address",
-      "sign.consent":"I agree that my details may be used to contact me about the rollout. (required)",
-      "sign.btn":"Send request","sign.note":"Your mail app opens to send the request to info@ispsconfirm.com.",
+      "sign.consent":"I agree with the <a href=\"privacy.html\">privacy notice</a> and that my details may be used to contact me about the rollout.",
+      "sign.btn":"Send request","sign.note":"DEMO · THIS FORM SUBMITS NOWHERE · SEND YOUR REQUEST TO INFO@ISPSCONFIRM.COM",
       "sign.okT":"Thanks","sign.okD":"your request has been received. We'll be in touch soon to discuss the rollout for your terminal.",
       "foot.tag":"Automated access control for ISPS port terminals: identification at the gate and a live port-ban check through the Belgian government API.",
-      "foot.product":"Product","foot.contact":"Contact","foot.lang":"NL / EN",
+      "foot.product":"Product","foot.contact":"Contact","foot.lang":"NL / EN","foot.privacy":"Privacy","foot.cookies":"Cookies",
       "foot.copy":"© 2026 isps.confirm · a product of Kanban Agency · Made in Belgium · Dutch (EN/FR to follow)"
     }
   };
 
-  var HTML_KEYS = {"hero.h1a":1,"hero.h1b":1,"hero.h1c":1};
+  var HTML_KEYS = {"hero.h1a":1,"hero.h1b":1,"hero.h1c":1,"sign.consent":1};
   var current = "nl";
 
   function applyLang(lang){
@@ -1287,16 +1288,8 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
     form.addEventListener("submit", function(ev){
       ev.preventDefault();
       if(!form.checkValidity()){ form.reportValidity(); return; }
-      var val = function(n){ var el = form.querySelector('[name="'+n+'"]'); return el ? el.value.trim() : ""; };
-      var en = current === "en";
-      var subject = en ? "Access request isps.confirm" : "Aanvraag toegang isps.confirm";
-      var body = en
-        ? ["Name: "+val("name"), "Company: "+val("company"), "Email: "+val("email")].join("\n")
-        : ["Naam: "+val("name"), "Bedrijf: "+val("company"), "E-mail: "+val("email")].join("\n");
-      var mailto = "mailto:info@ispsconfirm.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
       form.classList.add("hide");
       document.getElementById("formSuccess").classList.add("show");
-      window.location.href = mailto;
     });
   }
 
@@ -1321,26 +1314,24 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
     function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
     function smooth(t){ return t*t*(3-2*t); }
     // truck drives up the lane: approach, wait at the gate, through, onto the terminal
-    // truck: approach, then WAIT at the gate through the whole identity + order check,
-    // and only drive through once the barrier is fully open (at p=0.80)
     function truckYFor(p){
       if(p<0.30) return lerp(1360,1140,smooth(p/0.30));
-      if(p<0.80) return lerp(1140,1120,(p-0.30)/0.50);
-      if(p<0.94) return lerp(1120,620,smooth((p-0.80)/0.14));
-      return lerp(620,560,clamp((p-0.94)/0.06,0,1));
+      if(p<0.74) return lerp(1140,1120,(p-0.30)/0.44);
+      if(p<0.92) return lerp(1120,620,smooth((p-0.74)/0.18));
+      return lerp(620,560,clamp((p-0.92)/0.08,0,1));
     }
     function scaleFor(p){
       if(p<0.30) return lerp(1.0,1.12,smooth(p/0.30));
-      if(p<0.80) return lerp(1.12,1.3,(p-0.30)/0.50);
+      if(p<0.74) return lerp(1.12,1.3,(p-0.30)/0.44);
       return 1.3;
     }
     // camera: follow the truck, then ease into an aerial zoom-out that reaches the
     // full frame (water, ship, cranes, yard, gate) by p=0.95
     function camFor(p){
       var ty = truckYFor(p);
-      if(p < 0.90) return { s:scaleFor(p), cx:500, cy:ty };
-      var e = smooth(clamp((p-0.90)/0.08,0,1)); // fully out by 0.98
-      var s0 = scaleFor(0.90), cy0 = truckYFor(0.90);
+      if(p < 0.87) return { s:scaleFor(p), cx:500, cy:ty };
+      var e = smooth(clamp((p-0.87)/0.08,0,1)); // fully out by 0.95
+      var s0 = scaleFor(0.87), cy0 = truckYFor(0.87);
       return { s:lerp(s0, 0.48, e), cx:500, cy:lerp(cy0, 600, e) };
     }
     function buildScenery(){
@@ -1381,23 +1372,18 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
     buildScenery();
     function renderCaption(){
       var dict = I18N[current];
-      // stages: a approach, b check at gate (identity first, then order), d gate open, c checked in
-      var key = curP<0.30 ? "a" : (curP<0.72 ? "b" : (curP<0.82 ? "d" : "c"));
-      var idOk = curP>=0.55;    // identity + havenverbod resolves mid wait
-      var orderOk = curP>=0.66; // order number confirmed, this triggers the barrier
+      var key = curP<0.30 ? "a" : (curP<0.74 ? "b" : "c");
+      var resolved = key==="b" && curP>=0.58;
+      var greenState = (key==="c") || resolved;
       chipLabel.textContent = dict["term."+key+"Label"] || "";
       chip.setAttribute("data-stage", key);
-      chip.classList.toggle("resolved", key==="b" && idOk);
-      chip.classList.toggle("green", (key==="d"||key==="c") || (key==="b" && idOk));
+      chip.classList.toggle("resolved", resolved);
+      chip.classList.toggle("green", greenState);
       if(key==="b"){
-        chipText.textContent = dict["term.bLine1"];
-        if(orderOk){
-          chipText2.innerHTML = '<span class="b2ok">&#10003;</span><span>'+dict["term.bLine2"]+'</span>';
-          chipText2.classList.add("on");
-        } else {
-          chipText2.textContent = "";
-          chipText2.classList.remove("on");
-        }
+        chipText.textContent = dict["term.bOrder"];
+        if(resolved){ chipText2.innerHTML = '<span class="b2ok">&#10003;</span><span>'+dict["term.bDone"]+'</span>'; }
+        else { chipText2.textContent = dict["term.bWait"]; }
+        chipText2.classList.add("on");
       } else {
         chipText.textContent = dict["term."+key+"Text"] || "";
         chipText2.textContent = "";
@@ -1410,20 +1396,17 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       var c = camFor(curP);
       cam.setAttribute("transform","translate("+(CX - c.s*c.cx)+" "+(CY - c.s*c.cy)+") scale("+c.s+")");
       truck.setAttribute("transform","translate(0 "+(truckYFor(curP) - BASEY)+")");
-      // barrier hinges at the booth side (560,1058) and swings AWAY from the lane,
-      // clockwise (+90) so the arm comes to rest parallel beside the lane on the booth
-      // side and never crosses the truck. Fully open by 0.80, before the truck moves.
-      var open = clamp((curP-0.72)/0.08,0,1);
-      barrier.setAttribute("transform","rotate("+(90*open)+" 560 1058)");
-      var green = curP>=0.70;
+      var open = clamp((curP-0.72)/0.10,0,1);
+      barrier.setAttribute("transform","rotate("+(-78*open)+" 560 1058)");
+      var green = curP>=0.60;
       lightGreen.style.opacity = green ? 1 : 0;
       lightRed.style.opacity = green ? 0 : 1;
       if(hint) hint.style.opacity = curP>0.04 ? 0 : 1;
       renderCaption();
       // aerial reveal wash + closing line, scroll driven so contrast holds through the fade
-      var reveal = smooth(clamp((curP-0.90)/0.08,0,1));
+      var reveal = smooth(clamp((curP-0.87)/0.08,0,1));
       if(wash) wash.style.opacity = (reveal*0.6).toFixed(3);
-      var fo = smooth(clamp((curP-0.92)/0.06,0,1));
+      var fo = smooth(clamp((curP-0.89)/0.06,0,1));
       finalLine.style.opacity = fo.toFixed(3);
       finalLine.classList.toggle("show", fo>0.02);
       chip.style.opacity = (1-fo).toFixed(3);
