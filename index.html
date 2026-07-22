@@ -526,10 +526,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
   .marquee-track{animation:none}
   .outcome{opacity:1}
   .step{opacity:1}
-  /* scrollytelling collapses to a static final frame */
-  .scrolly.reduced,.scrolly.reduced .scrolly-track{height:100vh}
-  .sc-hint{display:none}
-  .sc-final{opacity:1;transform:translate(-50%,0)}
+  /* scrollytelling stays scroll-scrubbed (user-driven motion); only autoplay decorations stop */
   .sc-spin{animation:none;border-top-color:var(--accent)}
 }
 </style>
@@ -1436,17 +1433,14 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;b
       var top = scrolly.getBoundingClientRect().top;
       curP = clamp((-top)/(total||1), 0, 1);
     }
-    if(reduce){
-      scrolly.classList.add("reduced");
-      curP = 1;
-      requestAnimationFrame(frame);
-    } else {
-      var rafPending=false;
-      function schedule(){ if(!rafPending){ rafPending=true; requestAnimationFrame(function(){ frame(); rafPending=false; }); } }
-      window.addEventListener("scroll", function(){ measure(); schedule(); }, {passive:true});
-      window.addEventListener("resize", function(){ measure(); schedule(); });
-      measure(); frame();
-    }
+    /* The scrollytelling is user-driven (scrubbed by scrolling), so it stays
+       active even under prefers-reduced-motion; only autoplay decor stops. */
+    var rafPending=false;
+    function schedule(){ if(!rafPending){ rafPending=true; requestAnimationFrame(function(){ frame(); rafPending=false; }); } }
+    window.addEventListener("scroll", function(){ measure(); schedule(); }, {passive:true});
+    window.addEventListener("resize", function(){ measure(); schedule(); });
+    window.addEventListener("load", function(){ measure(); schedule(); });
+    measure(); frame();
   }
 
   /* ---------- init ---------- */
