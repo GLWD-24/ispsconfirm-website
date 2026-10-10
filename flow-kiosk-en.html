@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#09090A">
-<title>isps.confirm — How the kiosk flow works</title>
+<title>isps.confirm · How the kiosk flow works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -313,7 +313,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <g class="radar"><path d="M560 104L560 87A17 17 0 0 1 574 96Z" fill="#E8650F" opacity=".35"/><line x1="560" y1="104" x2="560" y2="87" stroke="#E8650F" stroke-width="2" stroke-linecap="round"/></g>
         <circle cx="560" cy="104" r="2" fill="#E8650F"/>
         <text x="612" y="92" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">Port ban check</text>
-        <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">AIGIS — real-time via the official</text>
+        <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">AIGIS: real-time via the official</text>
         <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Belgian government API, every visit</text>
         <g class="pulse3" fill="#E8650F">
           <circle cx="586" cy="186" r="5"/><circle cx="608" cy="186" r="5"/><circle cx="630" cy="186" r="5"/>
@@ -325,7 +325,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-ok">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#3FB27F"/><path d="M596 112l11 11 21-24" stroke="#111112" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">No ban — access granted</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">No ban, access granted</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">The barrier opens. The decision is logged.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">10:42:07 · access granted · logged ✓</text>
@@ -335,7 +335,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-no">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#E0533D"/><path d="M599 99l26 26M625 99l-26 26" stroke="#111112" stroke-width="4" stroke-linecap="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#E0533D">Ban found — access denied</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#E0533D">Ban found, access denied</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">The gate stays closed.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">10:44:31 · denied · reason: port ban · logged ✓</text>
@@ -358,20 +358,20 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
     <button id="btn-play" class="play">Pause</button>
     <button id="btn-next" aria-label="Next step">Next ›</button>
   </div>
-  <p class="rm-note">Reduced motion active — use Previous/Next to browse the steps.</p>
+  <p class="rm-note">Reduced motion active. Use Previous/Next to browse the steps.</p>
 </div>
 
 <script>
 const steps=[
  {lbl:"ARRIVAL",sub:"A driver arrives at the terminal gate.",dur:3400,cls:["tA-in"],panel:null},
- {lbl:"STEP 01 · CHECK-IN",sub:"The driver selects a language on the kiosk — available in 30 languages.",dur:4200,cls:["tA-in"],panel:"p-lang"},
+ {lbl:"STEP 01 · CHECK-IN",sub:"The driver selects a language on the kiosk, available in 30 languages.",dur:4200,cls:["tA-in"],panel:"p-lang"},
  {lbl:"STEP 02 · ORDER NUMBER",sub:"The carrier's order number is entered and linked.",dur:3800,cls:["tA-in"],panel:"p-order"},
- {lbl:"STEP 03 · DOCUMENT PHOTO",sub:"Photo of the ID card or passport — captured for verification and audit.",dur:4400,cls:["tA-in"],panel:"p-doc"},
+ {lbl:"STEP 03 · DOCUMENT PHOTO",sub:"Photo of the ID card or passport, captured for verification and audit.",dur:4400,cls:["tA-in"],panel:"p-doc"},
  {lbl:"STEP 04 · SELFIE",sub:"A live photo of the person, matched against the document.",dur:4400,cls:["tA-in"],panel:"p-selfie"},
  {lbl:"STEP 05 · NUMBER",sub:"National registry or BIS number, validated on format.",dur:4200,cls:["tA-in"],panel:"p-rrn"},
  {lbl:"STEP 06 · PORT BAN CHECK",sub:"Real-time check via AIGIS, the official Belgian government API.",dur:4400,cls:["tA-in","scan"],panel:"p-aigis"},
  {lbl:"STEP 07 · RESULT",sub:"No ban: the barrier opens and access is logged.",dur:5600,cls:["tA-in","tA-out","gate-open","res-ok"],panel:"p-ok"},
- {lbl:"STEP 07 · RESULT",sub:"Ban found: the gate stays closed — denied, logged with reason and timestamp.",dur:5600,cls:["tA-in","tA-out","tB-in","res-no"],panel:"p-no"},
+ {lbl:"STEP 07 · RESULT",sub:"Ban found: the gate stays closed. Denied, logged with reason and timestamp.",dur:5600,cls:["tA-in","tA-out","tB-in","res-no"],panel:"p-no"},
  {lbl:"",sub:"Every decision logged. Every visit checked.",dur:4200,cls:["tA-in","tA-out","tB-in","dim"],panel:null},
 ];
 const root=document.getElementById('root');

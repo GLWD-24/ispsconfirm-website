@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#09090A">
-<title>isps.confirm — Zo werkt de kioskflow</title>
+<title>isps.confirm · Zo werkt de kioskflow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -313,7 +313,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <g class="radar"><path d="M560 104L560 87A17 17 0 0 1 574 96Z" fill="#E8650F" opacity=".35"/><line x1="560" y1="104" x2="560" y2="87" stroke="#E8650F" stroke-width="2" stroke-linecap="round"/></g>
         <circle cx="560" cy="104" r="2" fill="#E8650F"/>
         <text x="612" y="92" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">Havenverbod-check</text>
-        <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">AIGIS — realtime via de Belgische</text>
+        <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">AIGIS: realtime via de Belgische</text>
         <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">overheids-API, bij elk bezoek</text>
         <g class="pulse3" fill="#E8650F">
           <circle cx="586" cy="186" r="5"/><circle cx="608" cy="186" r="5"/><circle cx="630" cy="186" r="5"/>
@@ -325,7 +325,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-ok">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#3FB27F"/><path d="M596 112l11 11 21-24" stroke="#111112" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Geen verbod — toegang verleend</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Geen verbod, toegang verleend</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">De slagboom opent. De beslissing wordt gelogd.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">10:42:07 · toegang verleend · gelogd ✓</text>
@@ -335,7 +335,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-no">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#E0533D"/><path d="M599 99l26 26M625 99l-26 26" stroke="#111112" stroke-width="4" stroke-linecap="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#E0533D">Verbod gevonden — toegang geweigerd</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#E0533D">Verbod gevonden, toegang geweigerd</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">De poort blijft dicht.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">10:44:31 · geweigerd · reden: havenverbod · gelogd ✓</text>
@@ -358,20 +358,20 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
     <button id="btn-play" class="play">Pauze</button>
     <button id="btn-next" aria-label="Volgende stap">Volgende ›</button>
   </div>
-  <p class="rm-note">Verminderde beweging actief — gebruik Vorige/Volgende om de stappen te bekijken.</p>
+  <p class="rm-note">Verminderde beweging actief. Gebruik Vorige/Volgende om de stappen te bekijken.</p>
 </div>
 
 <script>
 const steps=[
  {lbl:"AANKOMST",sub:"Een chauffeur meldt zich aan bij de poort van de terminal.",dur:3400,cls:["tA-in"],panel:null},
- {lbl:"STAP 01 · AANMELDEN",sub:"De chauffeur kiest zijn taal op de kiosk — beschikbaar in 30 talen.",dur:4200,cls:["tA-in"],panel:"p-lang"},
+ {lbl:"STAP 01 · AANMELDEN",sub:"De chauffeur kiest zijn taal op de kiosk, beschikbaar in 30 talen.",dur:4200,cls:["tA-in"],panel:"p-lang"},
  {lbl:"STAP 02 · ORDERNUMMER",sub:"Het ordernummer van de transporteur wordt ingegeven en gekoppeld.",dur:3800,cls:["tA-in"],panel:"p-order"},
- {lbl:"STAP 03 · DOCUMENTFOTO",sub:"Foto van de identiteitskaart of het paspoort — vastgelegd voor verificatie en audit.",dur:4400,cls:["tA-in"],panel:"p-doc"},
+ {lbl:"STAP 03 · DOCUMENTFOTO",sub:"Foto van de identiteitskaart of het paspoort, vastgelegd voor verificatie en audit.",dur:4400,cls:["tA-in"],panel:"p-doc"},
  {lbl:"STAP 04 · SELFIE",sub:"Live foto van de persoon zelf, ter vergelijking met het document.",dur:4400,cls:["tA-in"],panel:"p-selfie"},
  {lbl:"STAP 05 · NUMMER",sub:"Rijksregister- of BIS-nummer, met validatie op formaat.",dur:4200,cls:["tA-in"],panel:"p-rrn"},
  {lbl:"STAP 06 · HAVENVERBOD-CHECK",sub:"Realtime controle via AIGIS, de officiële Belgische overheids-API.",dur:4400,cls:["tA-in","scan"],panel:"p-aigis"},
  {lbl:"STAP 07 · RESULTAAT",sub:"Geen verbod: de slagboom opent en de toegang wordt geregistreerd.",dur:5600,cls:["tA-in","tA-out","gate-open","res-ok"],panel:"p-ok"},
- {lbl:"STAP 07 · RESULTAAT",sub:"Verbod gevonden: de poort blijft dicht — geweigerd, met reden en tijdstip gelogd.",dur:5600,cls:["tA-in","tA-out","tB-in","res-no"],panel:"p-no"},
+ {lbl:"STAP 07 · RESULTAAT",sub:"Verbod gevonden: de poort blijft dicht. Geweigerd, met reden en tijdstip gelogd.",dur:5600,cls:["tA-in","tA-out","tB-in","res-no"],panel:"p-no"},
  {lbl:"",sub:"Elke beslissing gelogd. Elk bezoek gecheckt.",dur:4200,cls:["tA-in","tA-out","tB-in","dim"],panel:null},
 ];
 const root=document.getElementById('root');

@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#09090A">
-<title>isps.confirm — Plus rapide via l'app : scan, numéro d'ordre, passage</title>
+<title>isps.confirm · Plus rapide via l'app : scan, numéro d'ordre, passage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -273,7 +273,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <!-- uitleg -->
         <text x="600" y="104" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">QR code rotatif</text>
         <text x="600" y="128" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Identité vérifiée au préalable dans l'app.</text>
-        <text x="600" y="146" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Le code se renouvelle toutes les 45 secondes —</text>
+        <text x="600" y="146" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Le code se renouvelle toutes les 45 secondes,</text>
         <text x="600" y="164" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">une capture d'écran est aussitôt inutilisable.</text>
         <g class="stepcheck"><circle cx="620" cy="198" r="14" fill="#3FB27F"/><path d="M613.5 198l5 5 8.5-10" stroke="#111112" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <text class="formatok" x="644" y="203" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#3FB27F" font-weight="600">scanné</text>
@@ -301,7 +301,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <circle cx="560" cy="104" r="2" fill="#E8650F"/>
         <text x="612" y="92" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">Contrôle en arrière-plan</text>
         <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Le contrôle portuaire s'exécute automatiquement</text>
-        <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">via AIGIS — à chaque visite, aussi via l'app</text>
+        <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">via AIGIS, à chaque visite, aussi via l'app</text>
         <g class="pulse3" fill="#E8650F">
           <circle cx="586" cy="186" r="5"/><circle cx="608" cy="186" r="5"/><circle cx="630" cy="186" r="5"/>
         </g>
@@ -312,7 +312,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-ok">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#3FB27F"/><path d="M596 112l11 11 21-24" stroke="#111112" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Passage rapide — barrière ouverte</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Passage rapide, barrière ouverte</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">Du scan au passage en quelques secondes.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">07:18:52 · scan QR · accès accordé · journalisé ✓</text>
@@ -321,7 +321,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
 
     <div class="outro">
       <div class="wm"><img src="assets/logo-wordmark.png" alt="isps.confirm" width="242" height="40"></div>
-      <p>Scan · numéro d'ordre · passage rapide — jamais moins strict</p>
+      <p>Scan · numéro d'ordre · passage rapide, jamais moins strict</p>
     </div>
   </div>
 
@@ -335,15 +335,15 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
     <button id="btn-play" class="play">Pause</button>
     <button id="btn-next" aria-label="Étape suivante">Suivant ›</button>
   </div>
-  <p class="rm-note">Mouvement réduit actif — utilisez Précédent/Suivant pour parcourir les étapes.</p>
+  <p class="rm-note">Mouvement réduit actif. Utilisez Précédent/Suivant pour parcourir les étapes.</p>
 </div>
 
 <script>
 const steps=[
- {lbl:"ARRIVÉE",sub:"Un chauffeur enregistré arrive — identité vérifiée au préalable dans l'app.",dur:3400,cls:["tA-in"],panel:null},
+ {lbl:"ARRIVÉE",sub:"Un chauffeur enregistré arrive, identité vérifiée au préalable dans l'app.",dur:3400,cls:["tA-in"],panel:null},
  {lbl:"ÉTAPE 01 · SCAN",sub:"Le chauffeur présente le QR code rotatif de l'app au scanner.",dur:4600,cls:["tA-in","scan"],panel:"p-qr"},
  {lbl:"ÉTAPE 02 · NUMÉRO D'ORDRE",sub:"Seul le numéro d'ordre du trajet reste à confirmer.",dur:3800,cls:["tA-in"],panel:"p-order"},
- {lbl:"EN ARRIÈRE-PLAN",sub:"Le contrôle portuaire s'exécute automatiquement via AIGIS — à chaque visite, aussi via l'app.",dur:4200,cls:["tA-in","scan"],panel:"p-aigis"},
+ {lbl:"EN ARRIÈRE-PLAN",sub:"Le contrôle portuaire s'exécute automatiquement via AIGIS, à chaque visite, aussi via l'app.",dur:4200,cls:["tA-in","scan"],panel:"p-aigis"},
  {lbl:"ÉTAPE 03 · PASSAGE RAPIDE",sub:"La barrière s'ouvre. Du scan au passage en quelques secondes.",dur:5600,cls:["tA-in","tA-out","gate-open","res-ok"],panel:"p-ok"},
  {lbl:"",sub:"Plus rapide, jamais moins strict.",dur:4200,cls:["tA-in","tA-out","dim"],panel:null},
 ];

@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#09090A">
-<title>isps.confirm — Faster via the app: scan, order number, in</title>
+<title>isps.confirm · Faster via the app: scan, order number, in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -273,7 +273,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <!-- uitleg -->
         <text x="600" y="104" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">Rotating QR code</text>
         <text x="600" y="128" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">Identity verified in advance in the app.</text>
-        <text x="600" y="146" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">The code refreshes every 45 seconds —</text>
+        <text x="600" y="146" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">The code refreshes every 45 seconds,</text>
         <text x="600" y="164" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">a screenshot is instantly useless.</text>
         <g class="stepcheck"><circle cx="620" cy="198" r="14" fill="#3FB27F"/><path d="M613.5 198l5 5 8.5-10" stroke="#111112" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <text class="formatok" x="644" y="203" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#3FB27F" font-weight="600">scanned</text>
@@ -301,7 +301,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
         <circle cx="560" cy="104" r="2" fill="#E8650F"/>
         <text x="612" y="92" font-family=""Montserrat",sans-serif" font-size="17" font-weight="600" fill="#ECEBE8">Check in the background</text>
         <text x="612" y="114" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">The port ban check runs automatically</text>
-        <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">via AIGIS — on every visit, also in-app</text>
+        <text x="612" y="132" font-family=""IBM Plex Sans",sans-serif" font-size="12.5" fill="#8F8C88">via AIGIS, on every visit, also in-app</text>
         <g class="pulse3" fill="#E8650F">
           <circle cx="586" cy="186" r="5"/><circle cx="608" cy="186" r="5"/><circle cx="630" cy="186" r="5"/>
         </g>
@@ -312,7 +312,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
       <g class="panel" id="p-ok">
         <g class="bigres"><circle cx="612" cy="112" r="34" fill="#3FB27F"/><path d="M596 112l11 11 21-24" stroke="#111112" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
         <g class="reslines">
-          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Faster in — gate open</text>
+          <text x="612" y="176" text-anchor="middle" font-family=""Montserrat",sans-serif" font-size="19" font-weight="600" fill="#3FB27F">Faster in, gate open</text>
           <text x="612" y="200" text-anchor="middle" font-family=""IBM Plex Sans",sans-serif" font-size="13" fill="#8F8C88">From scan to drive-through in seconds.</text>
         </g>
         <text class="logline" x="612" y="228" text-anchor="middle" font-family=""IBM Plex Mono",monospace" font-size="11" fill="#8F8C88">07:18:52 · QR scan · access granted · logged ✓</text>
@@ -321,7 +321,7 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
 
     <div class="outro">
       <div class="wm"><img src="assets/logo-wordmark.png" alt="isps.confirm" width="242" height="40"></div>
-      <p>Scan · order number · faster in — never less strict</p>
+      <p>Scan · order number · faster in, never less strict</p>
     </div>
   </div>
 
@@ -335,15 +335,15 @@ body{font-family:"IBM Plex Sans",sans-serif;background:#09090A;background-image:
     <button id="btn-play" class="play">Pause</button>
     <button id="btn-next" aria-label="Next step">Next ›</button>
   </div>
-  <p class="rm-note">Reduced motion active — use Previous/Next to browse the steps.</p>
+  <p class="rm-note">Reduced motion active. Use Previous/Next to browse the steps.</p>
 </div>
 
 <script>
 const steps=[
- {lbl:"ARRIVAL",sub:"A registered driver arrives — identity verified in advance in the app.",dur:3400,cls:["tA-in"],panel:null},
+ {lbl:"ARRIVAL",sub:"A registered driver arrives, identity verified in advance in the app.",dur:3400,cls:["tA-in"],panel:null},
  {lbl:"STEP 01 · SCAN",sub:"The driver shows the rotating QR code from the app to the scanner.",dur:4600,cls:["tA-in","scan"],panel:"p-qr"},
  {lbl:"STEP 02 · ORDER NUMBER",sub:"Only the trip's order number still needs confirming.",dur:3800,cls:["tA-in"],panel:"p-order"},
- {lbl:"IN THE BACKGROUND",sub:"The port ban check runs automatically via AIGIS — on every visit, also via the app.",dur:4200,cls:["tA-in","scan"],panel:"p-aigis"},
+ {lbl:"IN THE BACKGROUND",sub:"The port ban check runs automatically via AIGIS, on every visit, also via the app.",dur:4200,cls:["tA-in","scan"],panel:"p-aigis"},
  {lbl:"STEP 03 · FASTER IN",sub:"The gate opens. From scan to drive-through in seconds.",dur:5600,cls:["tA-in","tA-out","gate-open","res-ok"],panel:"p-ok"},
  {lbl:"",sub:"Faster in, never less strict.",dur:4200,cls:["tA-in","tA-out","dim"],panel:null},
 ];
