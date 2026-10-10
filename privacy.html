@@ -3,27 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#09090A">
 <title>Privacyverklaring, isps.confirm</title>
 <meta name="description" content="Privacyverklaring voor de website ispsconfirm.com: welke gegevens we verwerken, waarom, en welke rechten je hebt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#FAF9F6;--surface:#FFFFFF;--surface-2:#F1EFE9;--accent:#F25C05;--accent-h:#D94F04;
-  --accent-2:#D7263D;--ok:#1E9E4B;--text:#16181D;--text-dim:#5D6066;
-  --hairline:rgba(22,24,29,.10);--hairline-strong:rgba(22,24,29,.18);
-  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
-  --body:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
-  --mono:"JetBrains Mono","SFMono-Regular",ui-monospace,monospace;
-  --maxw:1220px;--ease:cubic-bezier(.22,.61,.36,1);
-}
+/* tokens live in assets/brand.css (brand 2026) */
+:root{--maxw:1220px;--ease:cubic-bezier(.22,.61,.36,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-::selection{background:var(--accent);color:#FFFFFF}
+::selection{background:var(--accent);color:var(--on-accent)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 .mono{font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--text-dim)}
 .eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--accent);margin-bottom:22px}
@@ -32,19 +29,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* buttons (pill) */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--body);font-weight:600;font-size:.92rem;letter-spacing:.01em;padding:12px 26px;border-radius:999px;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s var(--ease);white-space:nowrap}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.btn-primary{background:var(--accent);color:#FFFFFF}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(242,92,5,.45)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(232,101,15,.45)}
 
 /* nav */
 header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .35s var(--ease),border-color .35s var(--ease);border-bottom:1px solid transparent}
-header.nav.scrolled{background:rgba(250,249,246,.85);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--hairline)}
+header.nav.scrolled{background:rgba(9,9,10,.85);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--hairline)}
 .nav-inner{display:flex;align-items:center;gap:20px;height:72px}
-.wordmark{font-family:var(--display);font-weight:800;font-size:1.22rem;letter-spacing:-.01em}
+.wordmark{display:inline-flex;align-items:center;line-height:0}
+.wordmark img{height:22px;width:auto}
 .wordmark .dot{color:var(--accent)}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
 .lang-toggle{display:inline-flex;border:1px solid var(--hairline-strong);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.1em}
 .lang-toggle button{padding:7px 12px;color:var(--text-dim);transition:background .2s,color .2s}
-.lang-toggle button[aria-pressed="true"]{background:var(--accent);color:#FFFFFF}
+.lang-toggle button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
 
 /* legal content */
 .legal{max-width:760px;margin:0 auto;padding:132px 28px 30px;animation:fadeUp .6s var(--ease) both}
@@ -58,7 +56,7 @@ header.nav.scrolled{background:rgba(250,249,246,.85);-webkit-backdrop-filter:blu
 .legal p strong,.legal li strong{color:var(--text);font-weight:600}
 .legal ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin:6px 0 16px}
 .legal li{position:relative;padding-left:24px;color:var(--text-dim)}
-.legal li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.legal li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:0;background:var(--accent)}
 .legal a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .legal a:hover{color:var(--accent-h)}
 .legal-note{margin-top:44px;padding-top:20px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--text-dim);line-height:1.6}
@@ -84,12 +82,13 @@ footer{background:var(--surface-2);border-top:1px solid var(--accent);position:r
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
+<link rel="stylesheet" href="assets/brand.css">
 </head>
 <body>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="index.html" class="wordmark">isps<span class="dot">.</span>confirm</a>
+    <a href="index.html" class="wordmark brand-logo" aria-label="isps.confirm"><img src="assets/logo-wordmark.png" alt="isps.confirm" width="133" height="22"></a>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Taal / Language">
         <button data-lang="nl" aria-pressed="true">NL</button>
@@ -167,7 +166,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--accent);position:r
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <a href="index.html" class="wordmark">isps<span class="dot">.</span>confirm</a>
+        <a href="index.html" class="wordmark brand-logo" aria-label="isps.confirm"><img src="assets/logo-wordmark.png" alt="isps.confirm" width="133" height="22"></a>
         <p class="foot-tag" data-i18n="foot.tag">Geautomatiseerde toegangscontrole voor ISPS-haventerminals.</p>
       </div>
       <div class="foot-col">

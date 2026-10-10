@@ -1,0 +1,103 @@
+/* ==========================================================================
+   isps.confirm — brand 2026
+   Operator-console look: near-black, thin steel lines, brand orange as the
+   only signal colour. Shared by every page; load AFTER the page's own <style>.
+   ========================================================================== */
+
+:root{
+  /* surfaces */
+  --bg:#09090A;
+  --surface:#111112;
+  --surface-2:#17171A;
+  /* text */
+  --text:#ECEBE8;
+  --text-dim:#8F8C88;
+  --steel:#A7A4C4;            /* instrument lines and labels */
+  /* signal */
+  --accent:#E8650F;           /* logo orange */
+  --accent-h:#C4530C;
+  --accent-2:#E0533D;         /* denied */
+  --ok:#3FB27F;               /* granted */
+  --on-accent:#120800;        /* text on orange */
+  /* lines */
+  --hairline:rgba(167,164,196,.14);
+  --hairline-strong:rgba(167,164,196,.28);
+  /* type */
+  --display:"Montserrat","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+
+/* ---------- base ---------- */
+html{background:var(--bg)}
+body{
+  background-color:var(--bg);color:var(--text);
+  background-image:radial-gradient(circle at 1px 1px,rgba(167,164,196,.08) 1px,transparent 1.4px);
+  background-size:24px 24px;
+}
+body::after{display:none}                       /* drop the paper grain */
+::selection{background:var(--accent);color:var(--on-accent)}
+h1,h2,h3,h4{font-family:var(--display)}
+
+/* ---------- logo ---------- */
+.brand-logo{display:inline-flex;align-items:center;line-height:0}
+.brand-logo img{height:22px;width:auto;display:block}
+.brand-logo.lg img{height:30px}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{color:var(--steel)}
+.eyebrow::before{width:7px;height:7px;background:var(--accent)}
+
+/* ---------- buttons: square, mono, uppercase ---------- */
+.btn{border-radius:0;font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{box-shadow:0 10px 30px -10px rgba(232,101,15,.55)}
+.btn-ghost{border:1px solid var(--hairline-strong);color:var(--text)}
+.btn-ghost:hover span{color:var(--on-accent)}
+
+/* ---------- HUD corner brackets ---------- */
+.hud-br{position:relative}
+.hud-br::before,.hud-br::after{content:"";position:absolute;width:12px;height:12px;border-color:var(--steel);border-style:solid;opacity:.65;pointer-events:none;z-index:2}
+.hud-br::before{left:-1px;top:-1px;border-width:1px 0 0 1px}
+.hud-br::after{right:-1px;bottom:-1px;border-width:0 1px 1px 0}
+
+/* ---------- language toggle ---------- */
+.lang-toggle{border-radius:0;border-color:var(--hairline-strong)}
+.lang-toggle button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+
+/* ---------- navigation ---------- */
+.nav-links a{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.nav-right .btn{padding:11px 15px;font-size:.7rem}
+header.nav.scrolled{background:rgba(9,9,10,.86);border-bottom-color:var(--hairline)}
+@media (max-width:1240px){.nav-cta-ghost{display:none}}
+
+/* ---------- headlines: Montserrat is wider than the old Archivo ---------- */
+h1,h2{hyphens:manual;overflow-wrap:break-word}
+
+/* ---------- cards and panels: square corners + HUD brackets ---------- */
+.step-card,.feat-card,.feat-card::before,.aud-card,.outcome,.kiosk-inset,.kiosk-screen,.qr-wrap,
+.form-card,.field input,.app-notice,.fast-closer,.sc-chip,.sc-chip .sc-ico,.sc-final,.outcome .status-chip,
+.aud-head .lbl,.tick{border-radius:0}
+.feat-card,.aud-card,.kiosk-inset,.form-card{position:relative}
+.feat-card::after,.aud-card::after,.kiosk-inset::after,.form-card::after,.step-card::after{
+  content:"";position:absolute;right:-1px;bottom:-1px;width:12px;height:12px;
+  border-right:1px solid var(--steel);border-bottom:1px solid var(--steel);opacity:.6;pointer-events:none}
+.step.active .step-card::after{border-color:var(--accent);opacity:1}
+.feat-card,.aud-card,.step-card,.outcome{box-shadow:none}
+.feat-card:hover{box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+
+/* eyebrow square stays on the first line when the label wraps */
+.eyebrow{align-items:flex-start}
+.eyebrow::before{margin-top:.42em;flex:none}
+
+/* the app QR reads as a real code: dark modules on white */
+.qr-wrap{background:#F3F1EC;border-color:var(--hairline-strong)}
+.qr i{background:#111112}
+
+/* form fields on dark */
+.field input{background:var(--bg);border-color:var(--hairline-strong);color:var(--text)}
+.field input::placeholder{color:var(--text-dim)}
+
+/* footer */
+footer{background:var(--surface)}

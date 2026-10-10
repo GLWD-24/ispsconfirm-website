@@ -5,27 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>isps.confirm — Maak je pas</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9Ijk2IiBmaWxsPSIjMUUxRTFFIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTYsNTYpIHNjYWxlKDAuNzgpIj48cGF0aCBkPSJNMjU2IDY0IEMzMDAgODIgMzQyIDkyIDM3MiA5NiBMMzcwIDI1NCBDMzY4IDMzMCAzMzQgNDAyIDI1NiA0NDYgQzE3OCA0MDIgMTQ0IDMzMCAxNDIgMjU0IEwxNDAgOTYgQzE3MCA5MiAyMTIgODIgMjU2IDY0IFoiIHN0cm9rZT0iI0U4NjUwRiIgc3Ryb2tlLXdpZHRoPSIyNiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0yNDYgMzQ5IEwyMjAgMzQ5IEMyMDEgMzQ1IDE4NiAzMzUgMTg2IDMxOCBMMTg2IDIxNCBDMTg2IDE2NCAyMTYgMTQwIDI1NiAxMzYgQzI5NiAxNDAgMzI2IDE2NCAzMjYgMjE0IEwzMjYgMzE4IEMzMjYgMzM1IDMxMSAzNDUgMjkyIDM0OSBMMjY2IDM0OSIgc3Ryb2tlPSIjRTg2NTBGIiBzdHJva2Utd2lkdGg9IjIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTI0MyAzNDkgTDI0MyAyNTcgUTI0MyAyNTAgMjM2IDI1MCBMMjE3IDI1MCBRMjEwIDI1MCAyMTAgMjQzIEwyMTAgMjI3IFEyMTAgMjIwIDIxNyAyMjAgTDI5NSAyMjAgUTMwMiAyMjAgMzAyIDIyNyBMMzAyIDI0MyBRMzAyIDI1MCAyOTUgMjUwIEwyNzYgMjUwIFEyNjkgMjUwIDI2OSAyNTcgTDI2OSAzNDkiIHN0cm9rZT0iI0U4NjUwRiIgc3Ryb2tlLXdpZHRoPSIyMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#09090A">
 <!-- ISPS-ONBOARD-001 §1 — vaste bestemming van de gedrukte QR (poster/sticker,
      ISPS-POSTER-001). Deze pagina doet niets anders dan doorsturen naar de app:
      het drukwerk wijst hierheen en hoeft dus nooit vervangen te worden wanneer
      de app-URL wijzigt. Alleen de APP_URL onderaan aanpassen. -->
 <style>
-  :root{--bg:#FAF9F6;--accent:#E8650F;--text:#16181D;--text-dim:#5D6066}
+  :root{--bg:#09090A;--accent:#E8650F;--text:#ECEBE8;--text-dim:#8F8C88}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);min-height:100vh;display:grid;place-items:center;
-    font-family:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;padding:24px}
+    font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;padding:24px;
+    background-image:radial-gradient(circle at 1px 1px,rgba(167,164,196,.08) 1px,transparent 1.4px);background-size:24px 24px}
   .card{text-align:center;max-width:420px}
-  h1{font-size:22px;margin-bottom:8px}
-  p{color:var(--text-dim);font-size:15px;margin-bottom:20px}
-  a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-    font-weight:600;padding:14px 26px;border-radius:10px}
+  .card img{height:26px;width:auto;margin:0 auto 28px;display:block}
+  h1{font-family:"Montserrat","Segoe UI",system-ui,sans-serif;font-size:22px;margin-bottom:8px}
+  p{color:var(--text-dim);font-size:15px;margin-bottom:22px}
+  a.btn{display:inline-block;background:var(--accent);color:#120800;text-decoration:none;
+    font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px}
 </style>
 </head>
 <body>
   <!-- Alleen zichtbaar als de directe redirect niet uitvoert (JS uit / trage lading). -->
   <div class="card">
+    <img src="assets/logo-wordmark.png" alt="isps.confirm" width="157" height="26">
     <h1>Je pas aanmaken</h1>
     <p>We sturen je door naar de beveiligde app van isps.confirm. Gaat dat niet vanzelf, tik dan op de knop.</p>
     <a class="btn" id="go" href="#">Verder naar de app</a>
